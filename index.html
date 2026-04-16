@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CreatiGuate | Agencia Creativa Digital</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+
+  <style>
+    /* ===== VARIABLES ===== */
+    :root {
+      --cream:   #f2e9e4;
+      --navy:    #2f4858;
+      --sage:    #9eaf85;
+      --steel:   #5f839f;
+      --white:   #ffffff;
+      --dark:    #1a2b35;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body:    'Nunito', sans-serif;
+    }
+ 
+    /* ===== RESET ===== */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--navy);
+      overflow-x: hidden;
+    }
+
+    /* Estilo global para íconos */
+    .material-symbols-outlined {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+ 
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--steel); border-radius: 10px; }
+ 
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 999;
+      background: rgba(47, 72, 88, 0.95);
+      backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 5%;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+    }
+    .nav-logo { height: 42px; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: 2px;
+      color: var(--cream);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-cta {
+      background: var(--sage);
+      color: var(--navy) !important;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+    }
+    .nav-cta:hover { background: var(--cream) !important; color: var(--navy) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 26px; height: 2px; background: var(--cream); border-radius: 2px; transition: 0.3s; }
+ 
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      padding: 120px 5% 80px;
+    }
+    .hero-blobs { position: absolute; inset: 0; pointer-events: none; }
+    .blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(60px); opacity: 0.25;
+    }
+    .blob-1 { width: 500px; height: 500px; background: var(--sage); top: -100px; left: -100px; }
+    .blob-2 { width: 400px; height: 400px; background: var(--steel); bottom: -80px; right: -80px; }
+    .blob-3 { width: 300px; height: 300px; background: var(--cream); top: 40%; left: 40%; }
+ 
+    /* doodles */
+    .doodle {
+      position: absolute; opacity: 0.12;
+      color: var(--cream);
+      pointer-events: none;
+    }
+    .doodle-1 { top: 12%; left: 5%; font-size: 5rem; animation: float 5s ease-in-out infinite; }
+    .doodle-2 { top: 20%; right: 8%; font-size: 3.5rem; animation: float 6s ease-in-out infinite 1s; }
+    .doodle-3 { bottom: 18%; left: 12%; font-size: 4rem; animation: float 7s ease-in-out infinite 2s; }
+    .doodle-4 { bottom: 25%; right: 10%; font-size: 2.5rem; animation: float 4s ease-in-out infinite 0.5s; }
+ 
+    @keyframes float {
+      0%,100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-18px) rotate(5deg); }
+    }
+ 
+    .hero-content {
+      text-align: center; position: relative; z-index: 2;
+      max-width: 820px;
+      animation: heroFade 1.2s ease forwards;
+    }
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+ 
+    .hero-logo-animated {
+      width: min(260px, 60vw);
+      margin: 0 auto 32px;
+      display: block;
+      filter: drop-shadow(0 0 30px rgba(158,175,133,0.4));
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      letter-spacing: 4px;
+      color: var(--cream);
+      line-height: 0.95;
+      margin-bottom: 12px;
+    }
+    .hero h1 span { color: var(--sage); }
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: rgba(242,233,228,0.75);
+      max-width: 580px; margin: 0 auto 16px;
+      line-height: 1.7; font-weight: 300;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--sage); color: var(--navy);
+      font-family: var(--font-display); letter-spacing: 3px; font-size: 0.85rem;
+      padding: 6px 20px; border-radius: 30px; margin-bottom: 36px;
+    }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      font-family: var(--font-display); letter-spacing: 2px; font-size: 1rem;
+      padding: 14px 36px; border-radius: 50px; border: none; cursor: pointer;
+      text-decoration: none; display: inline-block;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.25); }
+    .btn-primary { background: var(--sage); color: var(--navy); }
+    .btn-outline { background: transparent; color: var(--cream); border: 2px solid var(--steel); }
+    .btn-outline:hover { background: var(--steel); color: var(--cream); }
+ 
+    .scroll-hint {
+      position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      color: rgba(242,233,228,0.4); font-size: 0.7rem; letter-spacing: 2px;
+      animation: bounce 2s infinite;
+    }
+    .scroll-hint::after {
+      content: ''; width: 1px; height: 40px; background: rgba(242,233,228,0.3);
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+ 
+    /* ===== SECTIONS COMMON ===== */
+    section { padding: 100px 5%; }
+    .section-label {
+      font-family: var(--font-display);
+      font-size: 0.85rem; letter-spacing: 4px;
+      color: var(--steel); margin-bottom: 8px;
+      display: block;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      letter-spacing: 3px; line-height: 1;
+      margin-bottom: 18px;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: rgba(47,72,88,0.7);
+      max-width: 560px; line-height: 1.75;
+    }
+    .center { text-align: center; }
+    .center .section-sub { margin: 0 auto; }
+ 
+    /* ===== ABOUT / PURPOSE ===== */
+    .about {
+      background: var(--cream);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .about-text .section-title { color: var(--navy); }
+    .about-text p {
+      font-size: 1.05rem; line-height: 1.85;
+      color: rgba(47,72,88,0.8); margin-bottom: 18px;
+    }
+    .about-text p strong { color: var(--steel); }
+    .about-visual {
+      position: relative; display: flex; align-items: center; justify-content: center;
+    }
+    .about-card {
+      background: var(--navy);
+      border-radius: 24px; padding: 48px 40px;
+      color: var(--cream); text-align: center;
+      position: relative; overflow: hidden;
+      box-shadow: 0 30px 80px rgba(47,72,88,0.25);
+    }
+    .about-card::before {
+      content: '';
+      position: absolute; top: -40px; right: -40px;
+      width: 180px; height: 180px;
+      border-radius: 50%; background: rgba(158,175,133,0.15);
+    }
+    .about-card-icon { font-size: 3.5rem; margin-bottom: 16px; color: var(--sage); }
+    .about-card h3 {
+      font-family: var(--font-display); font-size: 1.8rem;
+      letter-spacing: 3px; color: var(--sage);
+      margin-bottom: 12px;
+    }
+    .about-card p { font-size: 0.95rem; line-height: 1.7; opacity: 0.8; }
+    .about-accent {
+      position: absolute;
+      width: 120px; height: 120px; border-radius: 50%;
+      background: var(--sage); opacity: 0.15;
+      bottom: -30px; left: -30px;
+    }
+ 
+    /* ===== MVV (Misión Visión Valores) ===== */
+    .mvv {
+      background: var(--navy);
+      position: relative; overflow: hidden;
+    }
+    .mvv::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f2e9e4' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .mvv .section-title { color: var(--cream); }
+    .mvv .section-label { color: var(--sage); }
+    .mvv-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
+      margin-top: 60px;
+    }
+    .mvv-card {
+      background: rgba(242,233,228,0.06);
+      border: 1px solid rgba(242,233,228,0.1);
+      border-radius: 20px; padding: 40px 36px;
+      transition: background 0.3s, transform 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .mvv-card:hover { background: rgba(242,233,228,0.1); transform: translateY(-6px); }
+    .mvv-card:first-child { grid-column: 1 / -1; }
+    .mvv-card-icon {
+      font-size: 2.5rem; margin-bottom: 16px; color: var(--sage);
+    }
+    .mvv-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem; letter-spacing: 3px;
+      color: var(--sage); margin-bottom: 14px;
+    }
+    .mvv-card p {
+      color: rgba(242,233,228,0.75); font-size: 0.98rem; line-height: 1.8;
+    }
+    .valores-grid {
+      display: flex; flex-wrap: wrap; gap: 12px; margin-top: 60px;
+    }
+    .valor-pill {
+      font-family: var(--font-display); letter-spacing: 2px; font-size: 0.9rem;
+      padding: 10px 24px; border-radius: 50px;
+      border: 2px solid rgba(158,175,133,0.4);
+      color: var(--sage); background: rgba(158,175,133,0.08);
+      transition: background 0.3s, color 0.3s;
+      cursor: default;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .valor-pill:hover { background: var(--sage); color: var(--navy); }
+    .valor-pill .material-symbols-outlined { font-size: 1.1rem; }
+    .valores-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem; letter-spacing: 3px;
+      color: var(--cream); margin: 60px 0 20px;
+    }
+ 
+    /* ===== SERVICES ===== */
+    .services { background: var(--cream); }
+    .services .section-title { color: var(--navy); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px; margin-top: 60px;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 20px; padding: 36px 32px;
+      border: 1px solid rgba(95,131,159,0.12);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--sage), var(--steel));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+    }
+    .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(47,72,88,0.12); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon { font-size: 2.8rem; margin-bottom: 16px; color: var(--navy); }
+    .service-card h3 {
+      font-family: var(--font-display); font-size: 1.5rem;
+      letter-spacing: 2px; color: var(--navy); margin-bottom: 10px;
+    }
+    .service-card p { font-size: 0.92rem; color: rgba(47,72,88,0.65); line-height: 1.7; }
+ 
+    /* ===== PRICING ===== */
+    .pricing { background: var(--steel); }
+    .pricing .section-title { color: var(--cream); }
+    .pricing .section-label { color: var(--sage); }
+    .pricing .section-sub { color: rgba(242,233,228,0.7); }
+ 
+    .pricing-tabs {
+      display: flex; gap: 12px; margin: 40px 0 48px; flex-wrap: wrap;
+    }
+    .tab-btn {
+      font-family: var(--font-display); letter-spacing: 2px; font-size: 0.9rem;
+      padding: 10px 26px; border-radius: 50px; border: 2px solid rgba(242,233,228,0.3);
+      color: rgba(242,233,228,0.7); background: transparent; cursor: pointer;
+      transition: all 0.3s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .tab-btn .material-symbols-outlined { font-size: 1.2rem; }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--sage); color: var(--navy); border-color: var(--sage);
+    }
+ 
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+    @keyframes fadeIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
+ 
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .price-item {
+      background: rgba(242,233,228,0.08);
+      border: 1px solid rgba(242,233,228,0.15);
+      border-radius: 16px; padding: 24px 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: background 0.3s;
+    }
+    .price-item:hover { background: rgba(242,233,228,0.15); }
+    .price-item-name {
+      font-size: 0.95rem; color: var(--cream); font-weight: 600;
+    }
+    .price-item-price {
+      font-family: var(--font-display); font-size: 1.15rem;
+      letter-spacing: 1px; color: var(--sage); white-space: nowrap; margin-left: 16px;
+    }
+ 
+    /* Packages */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .package-card {
+      background: rgba(242,233,228,0.08);
+      border: 2px solid rgba(242,233,228,0.15);
+      border-radius: 24px; padding: 40px 34px;
+      position: relative; overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .package-card:hover { transform: translateY(-8px); border-color: var(--sage); }
+    .package-card.featured {
+      background: rgba(158,175,133,0.18);
+      border-color: var(--sage);
+    }
+    .package-badge {
+      position: absolute; top: 20px; right: 20px;
+      font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 2px;
+      background: var(--sage); color: var(--navy);
+      padding: 4px 14px; border-radius: 20px;
+    }
+    .package-card h3 {
+      font-family: var(--font-display); font-size: 2rem;
+      letter-spacing: 3px; color: var(--cream); margin-bottom: 8px;
+    }
+    .package-price {
+      font-family: var(--font-display); font-size: 3rem;
+      color: var(--sage); letter-spacing: 2px; margin-bottom: 28px;
+    }
+    .package-price span { font-size: 1.2rem; }
+    .package-features { list-style: none; margin-bottom: 32px; }
+    .package-features li {
+      font-size: 0.92rem; color: rgba(242,233,228,0.8);
+      padding: 8px 0; border-bottom: 1px solid rgba(242,233,228,0.08);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .package-features li::before { 
+      content: '\e876'; /* Icono de check Material Symbols */
+      font-family: 'Material Symbols Outlined';
+      color: var(--sage); 
+    }
+    .package-cta {
+      display: block; text-align: center;
+      font-family: var(--font-display); letter-spacing: 2px; font-size: 1rem;
+      padding: 13px; border-radius: 50px;
+      background: var(--sage); color: var(--navy);
+      text-decoration: none;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .package-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    .package-cta.outline {
+      background: transparent; color: var(--cream);
+      border: 2px solid rgba(242,233,228,0.4);
+    }
+    .package-cta.outline:hover { background: rgba(242,233,228,0.1); }
+ 
+    /* ===== WHY US ===== */
+    .why {
+      background: var(--cream);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .why-list { list-style: none; margin-top: 36px; }
+    .why-list li {
+      display: flex; align-items: flex-start; gap: 18px;
+      margin-bottom: 28px;
+    }
+    .why-list-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: var(--navy); display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: var(--cream); flex-shrink: 0;
+    }
+    .why-list-text h4 {
+      font-family: var(--font-display); letter-spacing: 2px; font-size: 1.1rem;
+      color: var(--navy); margin-bottom: 4px;
+    }
+    .why-list-text p { font-size: 0.9rem; color: rgba(47,72,88,0.65); line-height: 1.6; }
+    .why-visual {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .stat-box {
+      background: var(--navy); border-radius: 20px; padding: 32px 24px; text-align: center;
+    }
+    .stat-box:nth-child(2) { background: var(--sage); margin-top: 24px; }
+    .stat-box:nth-child(3) { background: var(--steel); margin-top: -24px; }
+    .stat-box:nth-child(4) { background: var(--navy); }
+    .stat-num {
+      font-family: var(--font-display); font-size: 3rem; letter-spacing: 2px;
+      color: var(--cream); display: block;
+    }
+    .stat-box:nth-child(2) .stat-num { color: var(--navy); }
+    .stat-label {
+      font-size: 0.8rem; letter-spacing: 1px; color: rgba(242,233,228,0.6); margin-top: 4px;
+      display: flex; justify-content: center; align-items: center; gap: 6px;
+    }
+    .stat-box:nth-child(2) .stat-label { color: rgba(47,72,88,0.7); }
+    .stat-label .material-symbols-outlined { font-size: 1.2rem; }
+ 
+    /* ===== TEAM ===== */
+    .team { background: var(--navy); text-align: center; }
+    .team .section-title { color: var(--cream); }
+    .team .section-label { color: var(--sage); }
+    .team-grid {
+      display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+      margin-top: 60px;
+    }
+    .team-card {
+      background: rgba(242,233,228,0.07);
+      border: 1px solid rgba(242,233,228,0.12);
+      border-radius: 24px; padding: 40px 36px;
+      max-width: 340px; text-align: center;
+      transition: transform 0.3s;
+    }
+    .team-card:hover { transform: translateY(-8px); }
+    .team-photo {
+      width: 140px; height: 140px; border-radius: 20px; object-fit: cover;
+      border: 3px solid var(--sage); margin: 0 auto 20px; display: block;
+    }
+    .team-card h3 {
+      font-family: var(--font-display); font-size: 1.8rem;
+      letter-spacing: 3px; color: var(--cream); margin-bottom: 6px;
+    }
+    .team-role { color: var(--sage); font-size: 0.9rem; letter-spacing: 1px; }
+ 
+    /* ===== CONTACT ===== */
+    .contact { background: var(--cream); }
+    .contact .section-title { color: var(--navy); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; margin-top: 60px; align-items: start;
+    }
+    .contact-info h3 {
+      font-family: var(--font-display); font-size: 1.6rem;
+      letter-spacing: 2px; color: var(--navy); margin-bottom: 18px;
+    }
+    .contact-info p {
+      font-size: 0.98rem; color: rgba(47,72,88,0.7); line-height: 1.8; margin-bottom: 32px;
+    }
+    .contact-channels { display: flex; flex-direction: column; gap: 16px; }
+    .channel-link {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--white); border-radius: 14px; padding: 16px 20px;
+      text-decoration: none; color: var(--navy);
+      border: 1px solid rgba(95,131,159,0.12);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .channel-link:hover { transform: translateX(6px); box-shadow: 0 8px 24px rgba(47,72,88,0.1); }
+    .channel-icon { font-size: 1.6rem; color: var(--steel); }
+    .channel-link span:last-child { font-size: 0.95rem; font-weight: 600; }
+ 
+    /* Form */
+    .contact-form {
+      background: var(--white);
+      border-radius: 24px; padding: 44px 40px;
+      box-shadow: 0 20px 60px rgba(47,72,88,0.08);
+    }
+    .contact-form h3 {
+      font-family: var(--font-display); font-size: 1.6rem;
+      letter-spacing: 2px; color: var(--navy); margin-bottom: 28px;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block; font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 1px; color: var(--steel); text-transform: uppercase; margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 13px 16px;
+      border: 2px solid rgba(95,131,159,0.2); border-radius: 12px;
+      font-family: var(--font-body); font-size: 0.95rem; color: var(--navy);
+      background: var(--cream); outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--steel); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-submit {
+      width: 100%; padding: 15px;
+      background: var(--navy); color: var(--cream);
+      font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 3px;
+      border: none; border-radius: 50px; cursor: pointer;
+      transition: background 0.3s, transform 0.25s;
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: var(--steel); transform: translateY(-2px); }
+    .form-note { font-size: 0.78rem; color: rgba(47,72,88,0.5); text-align: center; margin-top: 12px; }
+ 
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      padding: 60px 5% 30px;
+      color: rgba(242,233,228,0.6);
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 40px; margin-bottom: 50px;
+    }
+    .footer-brand { max-width: 320px; }
+    .footer-logo { height: 50px; margin-bottom: 18px; }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.8; }
+    .footer-nav h4 {
+      font-family: var(--font-display); letter-spacing: 3px; font-size: 0.9rem;
+      color: var(--cream); margin-bottom: 16px;
+    }
+    .footer-nav ul { list-style: none; }
+    .footer-nav ul li { margin-bottom: 10px; }
+    .footer-nav ul a {
+      text-decoration: none; color: rgba(242,233,228,0.55); font-size: 0.88rem;
+      transition: color 0.3s;
+    }
+    .footer-nav ul a:hover { color: var(--sage); }
+    .footer-bottom {
+      border-top: 1px solid rgba(242,233,228,0.08);
+      padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-bottom p { font-size: 0.82rem; }
+    .footer-tagline {
+      font-family: var(--font-display); letter-spacing: 3px; font-size: 0.85rem;
+      color: var(--sage);
+    }
+ 
+    /* ===== WHATSAPP FLOAT ===== */
+    .wa-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 999;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #25d366; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 30px rgba(37,211,102,0.4);
+      text-decoration: none; color: white;
+      animation: waPulse 2s ease-in-out infinite;
+      transition: transform 0.3s;
+    }
+    .wa-float:hover { transform: scale(1.1); }
+    .wa-float svg { width: 32px; height: 32px; fill: currentColor; }
+    @keyframes waPulse {
+      0%,100% { box-shadow: 0 8px 30px rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 8px 50px rgba(37,211,102,0.7); }
+    }
+ 
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .about, .why, .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+      .mvv-grid { grid-template-columns: 1fr; }
+      .mvv-card:first-child { grid-column: auto; }
+      .why-visual { display: none; }
+      .nav-links { display: none; flex-direction: column; gap: 20px; }
+      .nav-links.open {
+        display: flex; position: fixed; inset: 0; top: 70px;
+        background: var(--navy); padding: 40px;
+        z-index: 998;
+      }
+      .hamburger { display: flex; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+ 
+  <nav>
+    <img src="logocreatiguateanimado.gif" alt="CreatiGuate" class="nav-logo"/>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#sobre">Nosotros</a></li>
+      <li><a href="#mvv">Misión & Visión</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#precios">Precios</a></li>
+      <li><a href="#contacto" class="nav-cta">Contáctanos</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+ 
+  <a href="https://wa.me/50252157800" target="_blank" class="wa-float" title="Escríbenos por WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 413.6c-33.1 0-65.5-8.9-94-25.7l-6.7-4-69.8 18.3L72 334.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3s19.9 53.7 22.6 57.4c2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+  </a>
+ 
+  <section class="hero">
+    <div class="hero-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="doodle doodle-1">✦</div>
+    <div class="doodle doodle-2">◎</div>
+    <div class="doodle doodle-3">✶</div>
+    <div class="doodle doodle-4">◇</div>
+ 
+    <div class="hero-content">
+      <img src="logocreatiguateanimado.gif" alt="CreatiGuate Logo" class="hero-logo-animated"/>
+      <div class="hero-badge">AGENCIA DIGITAL · GUATEMALA</div>
+      <h1>Tu idea,<br/><span>nuestra creatividad</span></h1>
+      <p class="hero-tagline">
+        Nacemos del corazón de Guatemala. Convertimos logos en identidad, 
+        ideas en plataformas digitales y marcas en historias que conectan de verdad.
+      </p>
+      <div class="hero-buttons">
+        <a href="#precios" class="btn btn-primary">Ver Paquetes</a>
+        <a href="#contacto" class="btn btn-outline">Hablemos</a>
+      </div>
+    </div>
+    <div class="scroll-hint">SCROLL</div>
+  </section>
+ 
+  <section class="about" id="sobre">
+    <div class="about-text">
+      <span class="section-label">QUIÉNES SOMOS</span>
+      <h2 class="section-title">Creatividad<br/>con alma chapina</h2>
+      <p>
+        <strong>CreatiGuate</strong> nace del corazón de Guatemala, de esa creatividad que no tiene límites y que vive en nuestras manos, en nuestras pantallas y en nuestras ideas.
+      </p>
+      <p>
+        Aquí creemos que lo bien hecho no necesita lujo, solo <strong>pasión, detalle y ganas de dejar huella</strong>. Más que diseños o páginas web, hacemos experiencias digitales.
+      </p>
+      <p>
+        Somos de los que creen que la creatividad chapina puede llegar lejos — sin copiar, sin perder lo nuestro y siempre con los pies en esta tierra que nos inspira. Cada trabajo lleva el toque de Guatemala: <strong>color, alma</strong> y ese "vos, aquí estamos para hacerlo bien".
+      </p>
+    </div>
+    <div class="about-visual">
+      <div class="about-card">
+        <span class="material-symbols-outlined about-card-icon">track_changes</span>
+        <h3>NUESTRO PROPÓSITO</h3>
+        <p>Dar vida a ideas que representen el talento chapín, transformando marcas en experiencias digitales que conectan, inspiran y venden en Guatemala y más allá.</p>
+        <div class="about-accent"></div>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="mvv" id="mvv">
+    <span class="section-label">NUESTROS PILARES</span>
+    <h2 class="section-title" style="color:var(--cream)">Misión, Visión<br/>& Valores</h2>
+ 
+    <div class="mvv-grid">
+      <div class="mvv-card">
+        <span class="material-symbols-outlined mvv-card-icon">explore</span>
+        <h3>MISIÓN</h3>
+        <p>Crear soluciones creativas en diseño, desarrollo web y marketing digital que ayuden a emprendedores, empresas y marcas guatemaltecas a destacar con identidad, calidad y pasión en el mundo digital.</p>
+      </div>
+      <div class="mvv-card">
+        <span class="material-symbols-outlined mvv-card-icon">visibility</span>
+        <h3>VISIÓN</h3>
+        <p>Ser la agencia digital guatemalteca más reconocida por impulsar marcas con alma, creatividad sin límites y orgullo nacional; expandiendo nuestra presencia en la web sin perder nuestras raíces.</p>
+      </div>
+    </div>
+ 
+    <p class="valores-title">NUESTROS VALORES</p>
+    <div class="valores-grid">
+      <span class="valor-pill"><span class="material-symbols-outlined">auto_awesome</span> Creatividad sin límites</span>
+      <span class="valor-pill"><span class="material-symbols-outlined">public</span> Identidad guatemalteca</span>
+      <span class="valor-pill"><span class="material-symbols-outlined">workspace_premium</span> Calidad & Profesionalismo</span>
+      <span class="valor-pill"><span class="material-symbols-outlined">handshake</span> Cercanía & Confianza</span>
+      <span class="valor-pill"><span class="material-symbols-outlined">lightbulb</span> Innovación constante</span>
+    </div>
+  </section>
+ 
+  <section class="services" id="servicios">
+    <div class="center">
+      <span class="section-label">LO QUE HACEMOS</span>
+      <h2 class="section-title">Nuestros Servicios</h2>
+      <p class="section-sub">Desde el diseño de tu identidad hasta la creación de tu ecosistema web, tenemos todo lo que tu marca necesita para brillar en internet.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="material-symbols-outlined service-icon">brush</span>
+        <h3>DISEÑO & BRANDING</h3>
+        <p>Logotipos, manuales de marca, rebranding completo, diseño de papelería corporativa y presentaciones profesionales. Tu identidad visual, hecha con alma.</p>
+      </div>
+      <div class="service-card">
+        <span class="material-symbols-outlined service-icon">campaign</span>
+        <h3>PUBLICIDAD DIGITAL</h3>
+        <p>Diseño de imágenes para redes sociales, portadas, banners, catálogos digitales interactivos y portafolios profesionales que detienen el scroll.</p>
+      </div>
+      <div class="service-card">
+        <span class="material-symbols-outlined service-icon">movie</span>
+        <h3>PRODUCCIÓN DE VIDEO</h3>
+        <p>Edición de videos cortos, Reels y YouTube Shorts optimizados para el algoritmo. Intros animadas de logotipo y videos promocionales.</p>
+      </div>
+      <div class="service-card">
+        <span class="material-symbols-outlined service-icon">web</span>
+        <h3>SITIOS WEB & LINKTREES</h3>
+        <p>Creación de páginas web corporativas, Landing Pages (páginas de aterrizaje) para ventas, Linktrees personalizados y ecosistemas digitales.</p>
+      </div>
+      <div class="service-card">
+        <span class="material-symbols-outlined service-icon">bar_chart</span>
+        <h3>MARKETING & ADS</h3>
+        <p>Asesorías estratégicas, planificación mensual de contenido y configuración de campañas publicitarias en Facebook e Instagram Ads.</p>
+      </div>
+      <div class="service-card">
+        <span class="material-symbols-outlined service-icon">share</span>
+        <h3>GESTIÓN DE REDES</h3>
+        <p>Administración completa de perfiles (Community Management), programación de posts, respuesta a usuarios y estrategias de crecimiento orgánico.</p>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="pricing" id="precios">
+    <span class="section-label">TARIFAS & PAQUETES</span>
+    <h2 class="section-title">Precios transparentes,<br/>resultados reales</h2>
+    <p class="section-sub">Sin sorpresas. Elige lo que necesitas o contrata uno de nuestros paquetes y ahorra.</p>
+ 
+    <div class="pricing-tabs">
+      <button class="tab-btn active" onclick="showTab('paquetes')">
+        <span class="material-symbols-outlined">inventory_2</span> Paquetes
+      </button>
+      <button class="tab-btn" onclick="showTab('diseno')">
+        <span class="material-symbols-outlined">brush</span> Diseño & Branding
+      </button>
+      <button class="tab-btn" onclick="showTab('digital')">
+        <span class="material-symbols-outlined">campaign</span> Publicidad Digital
+      </button>
+      <button class="tab-btn" onclick="showTab('video')">
+        <span class="material-symbols-outlined">movie</span> Video
+      </button>
+      <button class="tab-btn" onclick="showTab('web')">
+        <span class="material-symbols-outlined">web</span> Web & Linktree
+      </button>
+      <button class="tab-btn" onclick="showTab('marketing')">
+        <span class="material-symbols-outlined">bar_chart</span> Marketing
+      </button>
+    </div>
+ 
+    <div class="tab-content active" id="tab-paquetes">
+      <div class="packages-grid">
+ 
+        <div class="package-card">
+          <div class="package-badge">EMPRENDEDOR</div>
+          <h3>KIT EMPRENDEDOR</h3>
+          <div class="package-price"><span>Q</span>2,500</div>
+          <ul class="package-features">
+            <li>Logo profesional</li>
+            <li>10 imágenes publicitarias</li>
+            <li>2 videos cortos (Reels/Shorts)</li>
+            <li>Diseño de Linktree básico</li>
+          </ul>
+          <a href="#contacto" class="package-cta outline">Lo quiero →</a>
+        </div>
+ 
+        <div class="package-card featured">
+          <div class="package-badge">⭐ MÁS POPULAR</div>
+          <h3>KIT PRESENCIA DIGITAL</h3>
+          <div class="package-price"><span>Q</span>4,500</div>
+          <ul class="package-features">
+            <li>Manual de marca completo</li>
+            <li>Página de Aterrizaje (Landing Page)</li>
+            <li>20 imágenes publicitarias</li>
+            <li>4 videos de 1 min</li>
+            <li>Integración botón WhatsApp</li>
+          </ul>
+          <a href="#contacto" class="package-cta">Lo quiero →</a>
+        </div>
+ 
+        <div class="package-card">
+          <div class="package-badge">PREMIUM</div>
+          <h3>KIT FULL AGENCY</h3>
+          <div class="package-price"><span>Q</span>8,500</div>
+          <ul class="package-features">
+            <li>Rebranding corporativo</li>
+            <li>Página Web Corporativa (3-5 secciones)</li>
+            <li>Catálogo digital interactivo</li>
+            <li>30 imágenes publicitarias</li>
+            <li>6 videos promocionales</li>
+            <li>1 mes de gestión de redes</li>
+          </ul>
+          <a href="#contacto" class="package-cta outline">Lo quiero →</a>
+        </div>
+ 
+      </div>
+    </div>
+ 
+    <div class="tab-content" id="tab-diseno">
+      <div class="price-grid">
+        <div class="price-item"><span class="price-item-name">Logotipo básico</span><span class="price-item-price">Q500 – Q800</span></div>
+        <div class="price-item"><span class="price-item-name">Logo profesional + manual de marca</span><span class="price-item-price">Q1,200 – Q2,000</span></div>
+        <div class="price-item"><span class="price-item-name">Rebranding completo</span><span class="price-item-price">Q1,500 – Q2,500</span></div>
+        <div class="price-item"><span class="price-item-name">Diseño de Tarjetas de presentación</span><span class="price-item-price">Q150 – Q250</span></div>
+        <div class="price-item"><span class="price-item-name">Papelería corporativa completa</span><span class="price-item-price">Q300 – Q500</span></div>
+      </div>
+    </div>
+ 
+    <div class="tab-content" id="tab-digital">
+      <div class="price-grid">
+        <div class="price-item"><span class="price-item-name">Imagen publicitaria (post/storie)</span><span class="price-item-price">Q150 – Q200</span></div>
+        <div class="price-item"><span class="price-item-name">Pack 5 imágenes</span><span class="price-item-price">Q600 – Q750</span></div>
+        <div class="price-item"><span class="price-item-name">Pack 10 imágenes</span><span class="price-item-price">Q1,100 – Q1,300</span></div>
+        <div class="price-item"><span class="price-item-name">Portadas y banners digitales</span><span class="price-item-price">Q200 – Q400</span></div>
+        <div class="price-item"><span class="price-item-name">Catálogo digital (PDF Interactivo)</span><span class="price-item-price">Q500 – Q900</span></div>
+        <div class="price-item"><span class="price-item-name">Portafolio digital profesional</span><span class="price-item-price">Q700 – Q1,500</span></div>
+      </div>
+    </div>
+ 
+    <div class="tab-content" id="tab-video">
+      <div class="price-grid">
+        <div class="price-item"><span class="price-item-name">Edición de video corto (15–30 seg)</span><span class="price-item-price">Q300 – Q400</span></div>
+        <div class="price-item"><span class="price-item-name">Video promocional (1 min)</span><span class="price-item-price">Q500 – Q700</span></div>
+        <div class="price-item"><span class="price-item-name">Video corporativo (2–3 min)</span><span class="price-item-price">Q900 – Q1,200</span></div>
+        <div class="price-item"><span class="price-item-name">Reels / Shorts optimizados</span><span class="price-item-price">Q250 – Q350</span></div>
+        <div class="price-item"><span class="price-item-name">Intro animada de logotipo</span><span class="price-item-price">Q300 – Q600</span></div>
+      </div>
+    </div>
+ 
+    <div class="tab-content" id="tab-web">
+      <div class="price-grid">
+        <div class="price-item"><span class="price-item-name">Linktree personalizado / Biolink</span><span class="price-item-price">Q250 – Q400</span></div>
+        <div class="price-item"><span class="price-item-name">Landing Page (Página de Aterrizaje)</span><span class="price-item-price">Q1,500 – Q2,500</span></div>
+        <div class="price-item"><span class="price-item-name">Sitio Web Corporativo (Informativo)</span><span class="price-item-price">Q3,000 – Q5,000</span></div>
+        <div class="price-item"><span class="price-item-name">Tienda Virtual (E-commerce básico)</span><span class="price-item-price">Q5,000 – Q8,000</span></div>
+        <div class="price-item"><span class="price-item-name">Integración WhatsApp / Chatbots web</span><span class="price-item-price">Q300 – Q600</span></div>
+        <div class="price-item"><span class="price-item-name">Mantenimiento Web Mensual</span><span class="price-item-price">Q400 – Q800</span></div>
+      </div>
+    </div>
+ 
+    <div class="tab-content" id="tab-marketing">
+      <div class="price-grid">
+        <div class="price-item"><span class="price-item-name">Asesoría de marketing digital (1 hora)</span><span class="price-item-price">Q250 – Q350</span></div>
+        <div class="price-item"><span class="price-item-name">Estrategia de Contenidos Mensual</span><span class="price-item-price">Q900 – Q1,200</span></div>
+        <div class="price-item"><span class="price-item-name">Gestión de Redes Sociales (Community M.)</span><span class="price-item-price">Q1,500 – Q3,500/mes</span></div>
+        <div class="price-item"><span class="price-item-name">Configuración Campañas FB/IG Ads</span><span class="price-item-price">Q800 – Q1,500*</span></div>
+      </div>
+      <p style="color:rgba(242,233,228,0.4); font-size:0.78rem; margin-top:16px;">* No incluye el presupuesto de inversión para la plataforma publicitaria (Meta Ads).</p>
+    </div>
+ 
+  </section>
+ 
+  <section class="why">
+    <div>
+      <span class="section-label">¿POR QUÉ ELEGIRNOS?</span>
+      <h2 class="section-title">Lo que nos hace<br/>diferentes</h2>
+      <ul class="why-list">
+        <li>
+          <div class="why-list-icon"><span class="material-symbols-outlined">public</span></div>
+          <div class="why-list-text">
+            <h4>ORGULLO CHAPÍN EN DIGITAL</h4>
+            <p>Somos guatemaltecos trabajando para guatemaltecos (y el mundo). Conocemos el mercado digital y sabemos qué tipo de contenido conecta con nuestra gente.</p>
+          </div>
+        </li>
+        <li>
+          <div class="why-list-icon"><span class="material-symbols-outlined">workspace_premium</span></div>
+          <div class="why-list-text">
+            <h4>CALIDAD SIN PRETEXTOS</h4>
+            <p>Desde un post para Instagram hasta el desarrollo de una web completa, cada proyecto lleva el nivel de detalle y profesionalismo que tu marca merece.</p>
+          </div>
+        </li>
+        <li>
+          <div class="why-list-icon"><span class="material-symbols-outlined">handshake</span></div>
+          <div class="why-list-text">
+            <h4>CERCANOS DE VERDAD</h4>
+            <p>No somos un call center. Somos un equipo que escucha, entiende tus objetivos de venta y trabaja contigo desde la idea hasta el lanzamiento digital.</p>
+          </div>
+        </li>
+        <li>
+          <div class="why-list-icon"><span class="material-symbols-outlined">bolt</span></div>
+          <div class="why-list-text">
+            <h4>ECOSISTEMA INTEGRAL</h4>
+            <p>Branding, video, web, redes. Todo bajo un mismo techo para que la presencia online de tu marca sea consistente, atractiva y genere conversiones.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="why-visual">
+      <div class="stat-box">
+        <span class="stat-num">100%</span>
+        <span class="stat-label"><span class="material-symbols-outlined">location_on</span> HECHO EN GUATEMALA</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">∞</span>
+        <span class="stat-label"><span class="material-symbols-outlined">lightbulb</span> IDEAS CREATIVAS</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">5+</span>
+        <span class="stat-label"><span class="material-symbols-outlined">devices</span> SERVICIOS WEB</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num"><span class="material-symbols-outlined" style="font-size:3rem;">favorite</span></span>
+        <span class="stat-label">CON PASIÓN</span>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="team" id="equipo">
+    <span class="section-label">EL EQUIPO</span>
+    <h2 class="section-title" style="color:var(--cream)">Las personas detrás<br/>de las pantallas</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="1.png" alt="José Ricardo Cristóbal" class="team-photo"/>
+        <h3>JOSÉ RICARDO CRISTÓBAL</h3>
+        <span class="team-role">Fundador & CEO</span>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="contact" id="contacto">
+    <span class="section-label">HABLEMOS</span>
+    <h2 class="section-title">¿Listo para escalar<br/>tu presencia digital?</h2>
+ 
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Estamos para ti</h3>
+        <p>
+          Trabajamos de forma remota y eficiente desde Guatemala para el mundo entero. Escríbenos, cuéntanos tu necesidad digital y en menos de 24 horas te enviaremos una propuesta hecha a tu medida.
+        </p>
+        <div class="contact-channels">
+          <a href="https://wa.me/50252157800" target="_blank" class="channel-link">
+            <span class="material-symbols-outlined channel-icon">chat</span>
+            <span>WhatsApp — Escríbenos ahora</span>
+          </a>
+          <a href="mailto:creatiguate2003@gmail.com" class="channel-link">
+            <span class="material-symbols-outlined channel-icon">mail</span>
+            <span>creatiguate2003@gmail.com</span>
+          </a>
+          <a href="https://www.facebook.com/creatiguate" target="_blank" class="channel-link">
+            <span class="material-symbols-outlined channel-icon">thumb_up</span>
+            <span>Facebook: CreatiGuate</span>
+          </a>
+          <a href="https://www.instagram.com/creatiguate" target="_blank" class="channel-link">
+            <span class="material-symbols-outlined channel-icon">photo_camera</span>
+            <span>Instagram: @creatiguate</span>
+          </a>
+        </div>
+      </div>
+ 
+      <div class="contact-form">
+        <h3>Cuéntanos tu proyecto</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre"/>
+          </div>
+          <div class="form-group">
+            <label>Empresa / Negocio</label>
+            <input type="text" placeholder="Nombre de tu empresa"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" placeholder="tuemail@ejemplo.com"/>
+        </div>
+        <div class="form-group">
+          <label>WhatsApp</label>
+          <input type="tel" placeholder="+502 5215-7800"/>
+        </div>
+        <div class="form-group">
+          <label>Servicio de interés</label>
+          <select>
+            <option value="">Selecciona un servicio...</option>
+            <option>Diseño & Branding</option>
+            <option>Publicidad Digital</option>
+            <option>Sitios Web & Linktrees</option>
+            <option>Producción de Video</option>
+            <option>Marketing & Gestión de Redes</option>
+            <option>Paquete de Presencia Digital</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cuéntanos tu idea</label>
+          <textarea placeholder="¿Qué necesita tu marca en internet? Cuéntanos todo..."></textarea>
+        </div>
+        <button class="form-submit" onclick="handleSubmit()">ENVIAR MENSAJE</button>
+        <p class="form-note">📍 Atendemos proyectos digitales en toda Guatemala y el exterior</p>
+      </div>
+    </div>
+  </section>
+ 
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="logocreatiguateanimado.gif" alt="CreatiGuate" class="footer-logo"/>
+        <p>Agencia creativa y digital. Transformamos tu presencia online en una máquina de conexión y ventas a través de diseño, web y redes sociales.</p>
+        <p style="margin-top:12px; color:var(--sage); font-size:0.82rem; font-style:italic;">"Tu idea, nuestra creatividad."</p>
+      </div>
+      <div class="footer-nav">
+        <h4>NAVEGACIÓN</h4>
+        <ul>
+          <li><a href="#sobre">Nosotros</a></li>
+          <li><a href="#mvv">Misión & Visión</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#precios">Precios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>SERVICIOS WEB & DIGITAL</h4>
+        <ul>
+          <li><a href="#precios">Diseño Web & Landing Pages</a></li>
+          <li><a href="#precios">Linktrees Personalizados</a></li>
+          <li><a href="#precios">Publicidad y Ads</a></li>
+          <li><a href="#precios">Producción de Video</a></li>
+          <li><a href="#precios">Gestión de Redes</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>REDES SOCIALES</h4>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="https://wa.me/50252157800">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 CreatiGuate · Agencia Digital · Guatemala</p>
+      <span class="footer-tagline">HECHO CON <span class="material-symbols-outlined" style="font-size: 0.9rem; vertical-align: sub;">favorite</span> EN GUATEMALA</span>
+    </div>
+  </footer>
+ 
+  <script>
+    // NAV TOGGLE
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+ 
+    // TABS
+    function showTab(tab) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.add('active');
+      // Encontrar el botón clickeado
+      event.currentTarget.classList.add('active');
+    }
+ 
+    // FORM SUBMIT
+    function handleSubmit() {
+      const btn = document.querySelector('.form-submit');
+      btn.textContent = '✓ MENSAJE ENVIADO';
+      btn.style.background = 'var(--sage)';
+      btn.style.color = 'var(--navy)';
+      setTimeout(() => {
+        btn.textContent = 'ENVIAR MENSAJE';
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 3000);
+    }
+ 
+    // SCROLL ANIMATIONS
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+ 
+    document.querySelectorAll('.service-card, .mvv-card, .package-card, .team-card, .price-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
