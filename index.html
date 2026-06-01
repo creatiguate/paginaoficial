@@ -2,444 +2,1458 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CreatiGuate | Agencia Creativa </title>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>CreatiGuate | Agencia Creativa</title>
+  <meta name="description" content="Agencia creativa en Guatemala especializada en social media, branding, páginas web y contenido visual para marcas que quieren destacar." />
+  <meta name="theme-color" content="#2F4858" />
+
+  <meta property="og:title" content="CreatiGuate | Agencia Creativa" />
+  <meta property="og:description" content="Diseño, redes sociales, branding y páginas web para marcas que quieren destacar." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="logocreatiguateanimado.gif" />
+
+  <link rel="icon" href="logocreatiguateanimado.gif" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
   <style>
-    /* ===== SISTEMA DE DISEÑO ===== */
     :root {
-      --cream:   #fdf8f5;
-      --navy:    #1a2b35;
-      --sage:    #9eaf85;
-      --steel:   #5f839f;
-      --white:   #ffffff;
-      --accent:  #d4a373;
-      --font-display: 'Bebas Neue', sans-serif;
-      --font-body:    'Nunito', sans-serif;
+      --cream: #f2e9e4;
+      --cream-soft: #fbf7f3;
+      --navy: #2f4858;
+      --navy-dark: #17252f;
+      --sage: #9eaf85;
+      --steel: #5f839f;
+      --white: #ffffff;
+      --muted: #667782;
+      --line: rgba(47,72,88,0.12);
+      --shadow: 0 24px 80px rgba(47,72,88,0.18);
+      --display: "Bebas Neue", sans-serif;
+      --body: "Inter", sans-serif;
     }
- 
-    /* ===== RESET & BASE ===== */
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: var(--font-body);
+      font-family: var(--body);
+      color: var(--navy);
+      background: var(--cream-soft);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button, input, textarea { font-family: inherit; }
+
+    .cg-navbar {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1180px, calc(100% - 32px));
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(255,255,255,0.72);
+      box-shadow: 0 18px 60px rgba(23,37,47,0.16);
+      backdrop-filter: blur(18px);
+    }
+
+    .cg-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .cg-brand img {
+      width: 46px;
+      height: 46px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid var(--sage);
+    }
+
+    .cg-brand span {
+      font-family: var(--display);
+      font-size: 1.9rem;
+      line-height: 1;
+    }
+
+    .cg-menu {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cg-menu a {
+      padding: 11px 14px;
+      border-radius: 999px;
+      color: var(--navy);
+      font-weight: 900;
+      font-size: 0.92rem;
+      transition: .22s ease;
+    }
+
+    .cg-menu a:hover {
+      background: rgba(158,175,133,0.18);
+      transform: translateY(-2px);
+    }
+
+    .cg-menu .cg-menu-cta {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .cg-menu-btn {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    .cg-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 900;
+      border: 0;
+      cursor: pointer;
+      transition: .24s ease;
+    }
+
+    .cg-btn-primary {
+      background: var(--sage);
+      color: var(--navy);
+      box-shadow: 0 16px 40px rgba(158,175,133,0.28);
+    }
+
+    .cg-btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 55px rgba(158,175,133,0.38);
+    }
+
+    .cg-btn-light {
+      background: rgba(255,255,255,0.10);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .cg-btn-light:hover {
+      background: rgba(255,255,255,0.16);
+      transform: translateY(-4px);
+    }
+
+    .cg-eyebrow {
+      color: var(--sage);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: .78rem;
+      font-weight: 900;
+    }
+
+    .cg-hero {
+      min-height: 100vh;
+      padding: 155px 7% 80px;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 60px;
+      align-items: center;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(158,175,133,.34), transparent 30%),
+        radial-gradient(circle at 86% 12%, rgba(95,131,159,.28), transparent 28%),
+        linear-gradient(135deg, var(--navy-dark), var(--navy));
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cg-hero::after {
+      content: "";
+      position: absolute;
+      width: 780px;
+      height: 780px;
+      right: -320px;
+      bottom: -360px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.05);
+    }
+
+    .cg-hero-content,
+    .cg-hero-visual {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cg-hero-logo {
+      width: 96px;
+      height: 96px;
+      border-radius: 28px;
+      object-fit: cover;
+      border: 3px solid rgba(158,175,133,.75);
+      margin-bottom: 24px;
+      box-shadow: 0 18px 55px rgba(0,0,0,.22);
+    }
+
+    .cg-hero h1 {
+      font-family: var(--display);
+      font-size: clamp(4.2rem, 8vw, 8.5rem);
+      line-height: .84;
+      max-width: 890px;
+      margin: 12px 0 24px;
+    }
+
+    .cg-hero h1 span { color: var(--sage); }
+
+    .cg-hero p {
+      max-width: 680px;
+      color: rgba(255,255,255,.76);
+      line-height: 1.8;
+      font-size: 1.08rem;
+    }
+
+    .cg-hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+
+    .cg-proof {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 42px;
+    }
+
+    .cg-proof div {
+      padding: 16px 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      min-width: 140px;
+      backdrop-filter: blur(10px);
+    }
+
+    .cg-proof strong {
+      display: block;
+      font-family: var(--display);
+      font-size: 2.3rem;
+      line-height: 1;
+    }
+
+    .cg-proof span {
+      display: block;
+      color: rgba(255,255,255,.65);
+      font-weight: 800;
+      font-size: .9rem;
+    }
+
+    .cg-device {
+      width: min(420px, 88vw);
+      min-height: 600px;
+      margin-inline: auto;
+      border-radius: 48px;
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: 0 35px 100px rgba(0,0,0,.28);
+      animation: floatDevice 5s ease-in-out infinite;
+    }
+
+    .cg-device-card {
+      min-height: 250px;
+      border-radius: 34px;
+      padding: 28px;
       background: var(--cream);
       color: var(--navy);
-      overflow-x: hidden;
-      line-height: 1.6;
+      margin-bottom: 16px;
     }
 
-    /* ===== NAVEGACIÓN ===== */
-    nav {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-      background: rgba(26, 43, 53, 0.95); backdrop-filter: blur(10px);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 15px 5%; transition: 0.4s;
-    }
-    .nav-logo { 
-      height: 50px; width: 50px; border-radius: 50%; 
-      object-fit: cover; border: 2px solid var(--sage);
-    }
-    .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
-    .nav-links a {
-      font-family: var(--font-display); font-size: 1.2rem; letter-spacing: 1px;
-      color: var(--white); text-decoration: none; transition: 0.3s;
-    }
-    .nav-links a:hover { color: var(--sage); }
-    .nav-cta {
-      background: var(--sage); color: var(--navy) !important;
-      padding: 10px 25px; border-radius: 50px; font-weight: 800;
+    .cg-device-card h3 {
+      font-family: var(--display);
+      font-size: 3.2rem;
+      line-height: .9;
+      margin: 10px 0;
     }
 
-    /* ===== HERO SECTION ===== */
-    .hero {
-      height: 100vh; background: var(--navy);
-      display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden; padding: 0 5%;
-    }
-    .hero-content { text-align: center; z-index: 5; max-width: 900px; }
-    .hero-logo-gif {
-      width: 150px; height: 150px; border-radius: 50%; 
-      object-fit: cover; border: 4px solid var(--sage);
-      margin-bottom: 30px; box-shadow: 0 0 30px rgba(158,175,133,0.4);
-    }
-    .hero h1 {
-      font-family: var(--font-display); font-size: clamp(3rem, 10vw, 6rem);
-      color: var(--white); line-height: 1; margin-bottom: 20px;
-    }
-    .hero h1 span { color: var(--sage); }
-    .hero p { color: rgba(255,255,255,0.8); font-size: 1.2rem; margin-bottom: 30px; }
-
-    /* ===== MARCAS (TICKER) ===== */
-    .ticker-wrapper {
-      background: var(--white); padding: 50px 0 40px; border-bottom: 1px solid #eee;
-    }
-    .ticker-title {
-      text-align: center; font-family: var(--font-display); font-size: 2.5rem;
-      color: var(--navy); margin-bottom: 30px; letter-spacing: 2px;
-    }
-    .ticker {
-      overflow: hidden; display: flex; white-space: nowrap; width: 100%;
-    }
-    .ticker-content { display: flex; animation: scroll 25s linear infinite; align-items: center;}
-    .ticker-content img { height: 90px; margin: 0 60px; filter: grayscale(1); opacity: 0.6; transition: 0.3s; object-fit: contain; }
-    .ticker-content img:hover { filter: grayscale(0); opacity: 1; transform: scale(1.1); }
-    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* ===== SECCIONES GENERALES ===== */
-    section { padding: 100px 8%; }
-    .section-header { text-align: center; margin-bottom: 60px; }
-    .section-header h2 { font-family: var(--font-display); font-size: 3.5rem; color: var(--navy); }
-    .section-header p { color: var(--steel); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
-
-    /* ===== PORTAFOLIO WEB ===== */
-    .web-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
-    .web-card {
-      background: var(--white); border-radius: 20px; overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: 0.4s; border: 1px solid #eee;
-    }
-    .web-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
-    
-    .web-img-box { 
-      height: 250px; width: 100%; background: #e0e5ec; position: relative; overflow: hidden; 
-      border-bottom: 4px solid var(--sage);
-    }
-    .web-img-box iframe {
-      width: 400%; height: 400%; 
-      transform: scale(0.25); 
-      transform-origin: top left; pointer-events: none; 
-      border: none; position: absolute; top: 0; left: 0;
+    .cg-device-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
     }
 
-    .web-info { padding: 30px; }
-    .web-info h3 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 10px; color: var(--navy); }
-    .web-info p { color: #555; margin-bottom: 20px; }
-    .web-link { 
-      color: var(--white); background: var(--navy); padding: 10px 20px; border-radius: 8px;
-      text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s;
-    }
-    .web-link:hover { background: var(--sage); color: var(--navy); }
-
-    /* BLOQUE EXPLICATIVO GITHUB */
-    .tech-info {
-      background: var(--navy); color: var(--white);
-      padding: 40px; border-radius: 20px; margin-top: 60px;
-      display: flex; align-items: center; gap: 30px; flex-wrap: wrap;
-    }
-    .tech-info h4 { font-family: var(--font-display); font-size: 2rem; color: var(--sage); margin-bottom: 10px; }
-    .tech-info p { font-size: 1.05rem; opacity: 0.9; }
-
-    /* ===== SOCIAL MEDIA ===== */
-    .stack-grid { 
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; 
-      justify-items: center;
-    }
-    .stack-container {
-      position: relative; width: 100%; max-width: 350px; height: 400px; 
-      cursor: pointer; perspective: 1000px;
-    }
-    .stack-card {
-      position: absolute; width: 100%; height: 100%;
-      border-radius: 15px; 
-      object-fit: contain; 
-      background-color: var(--white); 
-      border: 4px solid var(--white);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    .cg-device-grid div {
+      min-height: 120px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(158,175,133,.55), rgba(95,131,159,.30));
     }
 
-    /* ===== BRANDING GRID ===== */
-    .branding-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;
-    }
-    .brand-item {
-      width: 100%; height: 250px; border-radius: 15px; overflow: hidden; background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-    .brand-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-    .brand-item:hover img { transform: scale(1.08); }
-
-    /* ===== FOOTER ===== */
-    footer { background: var(--navy); color: var(--white); padding: 80px 8% 40px; }
-    .footer-content {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px;
-      border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 50px;
-    }
-    .footer-logo-box img { width: 60px; border-radius: 50%; margin-bottom: 20px; }
-    .social-links { display: flex; gap: 15px; margin-top: 20px; }
-    .social-links a {
-      background: rgba(255,255,255,0.1); width: 45px; height: 45px; 
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 50%; color: var(--white); text-decoration: none; transition: 0.3s;
-    }
-    .social-links a:hover { background: var(--sage); transform: translateY(-5px); }
-    .footer-bottom { text-align: center; padding-top: 30px; font-size: 0.9rem; opacity: 0.6; }
-
-    /* =========================================
-       RESPONSIVE DESIGN (MEJORADO PARA MÓVILES)
-       ========================================= */
-    @media (max-width: 900px) {
-      .web-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-      .stack-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    @keyframes floatDevice {
+      0%,100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-16px) rotate(2deg); }
     }
 
-    @media (max-width: 768px) {
-      /* Ajuste de Navegación (Ahora se muestran los botones apilados bonito) */
-      nav { flex-direction: column; padding: 15px; gap: 15px; }
-      .nav-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; width: 100%; }
-      .nav-links a { font-size: 1.1rem; }
-      .nav-cta { padding: 6px 20px; font-size: 1rem; }
-      
-      /* Ajuste Hero */
-      .hero { padding: 120px 5% 40px; height: auto; min-height: 100vh; }
-      .hero h1 { font-size: 3.5rem; }
-      .hero-logo-gif { width: 120px; height: 120px; }
-      .hero p { font-size: 1.1rem; }
-
-      /* Ajuste Secciones */
-      section { padding: 60px 5%; }
-      .section-header { margin-bottom: 40px; }
-      .section-header h2 { font-size: 2.5rem; }
-      
-      /* Ticker Ajustado */
-      .ticker-title { font-size: 1.8rem; margin-bottom: 20px; }
-      .ticker-content img { height: 50px; margin: 0 30px; }
-      .ticker-wrapper { padding: 40px 0 30px; }
-
-      /* GitHub Box */
-      .tech-info { padding: 30px 20px; flex-direction: column; text-align: center; }
-      .tech-info h4 { font-size: 1.6rem; }
-      
-      /* Branding Grid Ajustado */
-      .branding-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
-      .brand-item { height: 180px; }
-
-      /* Footer */
-      footer { padding: 60px 5% 30px; }
-      .footer-content { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-      .footer-logo-box img { margin: 0 auto 15px; }
-      .social-links { justify-content: center; }
+    .cg-section {
+      padding: 95px 7%;
     }
 
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 2.8rem; }
-      .nav-links { gap: 10px; }
-      .nav-links a { font-size: 1rem; }
-      
-      /* Ajustes precisos para pantallas muy pequeñas */
-      .web-grid { grid-template-columns: 1fr; }
-      .stack-grid { grid-template-columns: 1fr; }
-      .stack-container { height: 320px; }
-      .web-img-box { height: 200px; }
-      .web-info { padding: 20px; }
-      .web-info h3 { font-size: 1.6rem; }
+    .cg-section-alt {
+      background: var(--cream);
+    }
+
+    .cg-section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 38px;
+    }
+
+    .cg-section-head h2 {
+      font-family: var(--display);
+      font-size: clamp(3.2rem, 5vw, 5.6rem);
+      line-height: .88;
+      max-width: 820px;
+    }
+
+    .cg-section-head p {
+      color: var(--steel);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: .78rem;
+      margin-bottom: 8px;
+    }
+
+    .cg-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 900;
+      color: var(--navy);
+      border-bottom: 2px solid var(--sage);
+      padding-bottom: 4px;
+    }
+
+    .cg-ticker-wrap {
+      background: var(--white);
+      padding: 48px 0;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cg-ticker-title {
+      text-align: center;
+      font-family: var(--display);
+      color: var(--navy);
+      font-size: 2.5rem;
+      margin-bottom: 28px;
+    }
+
+    .cg-ticker {
+      display: flex;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .cg-ticker-track {
+      display: flex;
+      align-items: center;
+      animation: ticker 24s linear infinite;
+    }
+
+    .cg-ticker-track img {
+      height: 88px;
+      max-width: 180px;
+      object-fit: contain;
+      margin: 0 48px;
+      filter: grayscale(1);
+      opacity: .65;
+      transition: .25s ease;
+    }
+
+    .cg-ticker-track img:hover {
+      filter: grayscale(0);
+      opacity: 1;
+      transform: scale(1.08);
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .cg-web-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 26px;
+    }
+
+    .cg-web-card,
+    .cg-pack-card,
+    .cg-brand-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 18px 55px rgba(47,72,88,.09);
+      transition: .24s ease;
+    }
+
+    .cg-web-card:hover,
+    .cg-pack-card:hover,
+    .cg-brand-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+    }
+
+    .cg-web-preview {
+      height: 280px;
+      background: rgba(47,72,88,.08);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 5px solid var(--sage);
+    }
+
+    .cg-web-preview iframe {
+      width: 400%;
+      height: 400%;
+      transform: scale(.25);
+      transform-origin: top left;
+      border: 0;
+      pointer-events: none;
+    }
+
+    .cg-web-info {
+      padding: 28px;
+    }
+
+    .cg-web-info h3,
+    .cg-pack-card h3 {
+      font-family: var(--display);
+      font-size: 2.6rem;
+      line-height: .92;
+      margin-bottom: 10px;
+    }
+
+    .cg-web-info p,
+    .cg-pack-card p,
+    .cg-brand-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .cg-tech-box {
+      margin-top: 34px;
+      padding: 32px;
+      border-radius: 32px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-dark));
+      color: var(--white);
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .cg-tech-box span {
+      color: var(--sage);
+      font-size: 3.4rem;
+    }
+
+    .cg-tech-box h3 {
+      font-family: var(--display);
+      font-size: 2.6rem;
+      color: var(--sage);
+      margin-bottom: 4px;
+    }
+
+    .cg-tech-box p {
+      color: rgba(255,255,255,.74);
+      line-height: 1.75;
+    }
+
+    .cg-pack-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .cg-pack-card {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .cg-pack-cover {
+      height: 390px;
+      position: relative;
+      overflow: hidden;
+      background: rgba(47,72,88,.08);
+    }
+
+    .cg-pack-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: var(--white);
+      transition: .32s ease;
+    }
+
+    .cg-pack-card:hover .cg-pack-cover img {
+      transform: scale(1.04);
+    }
+
+    .cg-count {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 13px;
+      border-radius: 999px;
+      background: rgba(23,37,47,.80);
+      color: var(--white);
+      font-weight: 900;
+      backdrop-filter: blur(10px);
+      font-size: .86rem;
+    }
+
+    .cg-pack-info {
+      padding: 24px;
+    }
+
+    .cg-tag {
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(158,175,133,.18);
+      color: var(--navy);
+      font-size: .76rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .cg-brand-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .cg-brand-card {
+      height: 340px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .cg-brand-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .32s ease;
+    }
+
+    .cg-brand-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .cg-brand-card p {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      right: 18px;
+      margin: 0;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(23,37,47,.76);
+      color: var(--white);
+      font-weight: 900;
+      backdrop-filter: blur(12px);
+    }
+
+    .cg-cta {
+      padding: 90px 7%;
+      text-align: center;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 18% 20%, rgba(158,175,133,.22), transparent 32%),
+        linear-gradient(135deg, var(--navy-dark), var(--navy));
+    }
+
+    .cg-cta h2 {
+      font-family: var(--display);
+      font-size: clamp(3.5rem, 7vw, 7rem);
+      line-height: .88;
+      max-width: 900px;
+      margin: 10px auto 18px;
+    }
+
+    .cg-cta p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      color: rgba(255,255,255,.74);
+      line-height: 1.8;
+    }
+
+    .cg-footer {
+      padding: 72px 7% 28px;
+      background: var(--navy-dark);
+      color: var(--white);
+    }
+
+    .cg-footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .9fr .9fr;
+      gap: 40px;
+      padding-bottom: 44px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+
+    .cg-footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .cg-footer-logo img {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      object-fit: cover;
+    }
+
+    .cg-footer-logo h3 {
+      font-family: var(--display);
+      font-size: 2.5rem;
+      line-height: .9;
+    }
+
+    .cg-footer p,
+    .cg-footer a {
+      color: rgba(255,255,255,.70);
+      line-height: 1.75;
+      font-weight: 700;
+    }
+
+    .cg-footer h4 {
+      font-family: var(--display);
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .cg-social-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .cg-social-links a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      color: var(--white);
+      transition: .22s ease;
+    }
+
+    .cg-social-links a:hover {
+      background: var(--sage);
+      color: var(--navy);
+      transform: translateY(-3px);
+    }
+
+    .cg-footer-bottom {
+      padding-top: 24px;
+      text-align: center;
+      color: rgba(255,255,255,.55);
+      font-weight: 800;
+    }
+
+    .cg-whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 1500;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--sage);
+      color: var(--navy);
+      box-shadow: 0 18px 50px rgba(47,72,88,.28);
+      font-weight: 900;
+      transition: .22s ease;
+    }
+
+    .cg-whatsapp:hover {
+      transform: translateY(-5px) scale(1.04);
+    }
+
+    .cg-lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 26px;
+      background: rgba(23,37,47,.82);
+      backdrop-filter: blur(14px);
+      z-index: 3000;
+    }
+
+    .cg-lightbox.active {
+      display: grid;
+      animation: fadeIn .18s ease;
+    }
+
+    .cg-lightbox-card {
+      width: min(1120px, 100%);
+      max-height: 88vh;
+      background: var(--white);
+      border-radius: 34px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      box-shadow: 0 30px 120px rgba(0,0,0,.36);
+    }
+
+    .cg-lightbox-main {
+      display: grid;
+      place-items: center;
+      background: rgba(47,72,88,.06);
+      min-height: 620px;
+    }
+
+    .cg-lightbox-main img {
+      max-height: 82vh;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .cg-lightbox-info {
+      padding: clamp(26px, 4vw, 48px);
+      display: grid;
+      align-content: center;
+    }
+
+    .cg-lightbox-info small {
+      color: var(--steel);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cg-lightbox-info h3 {
+      font-family: var(--display);
+      font-size: clamp(3rem, 5vw, 5.4rem);
+      line-height: .88;
+      margin: 12px 0;
+    }
+
+    .cg-lightbox-info p {
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .cg-thumbs {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+      gap: 10px;
+      max-height: 160px;
+      overflow-y: auto;
+      margin: 14px 0 24px;
+      padding-right: 6px;
+    }
+
+    .cg-thumb {
+      height: 74px;
+      border: 2px solid transparent;
+      border-radius: 14px;
+      overflow: hidden;
+      padding: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .cg-thumb.active { border-color: var(--sage); }
+    .cg-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+    .cg-close,
+    .cg-arrow {
+      position: fixed;
+      z-index: 3002;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.11);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+    }
+
+    .cg-close {
+      top: 24px;
+      right: 24px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+    }
+
+    .cg-arrow {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+    }
+
+    .cg-arrow.prev { left: 22px; }
+    .cg-arrow.next { right: 22px; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 1120px) {
+      .cg-hero { grid-template-columns: 1fr; }
+      .cg-hero-visual { display: none; }
+      .cg-pack-grid { grid-template-columns: repeat(2, 1fr); }
+      .cg-brand-grid { grid-template-columns: repeat(2, 1fr); }
+      .cg-lightbox-card { grid-template-columns: 1fr; overflow-y: auto; }
+      .cg-lightbox-main { min-height: 420px; }
+    }
+
+    @media (max-width: 860px) {
+      .cg-navbar {
+        top: 12px;
+        border-radius: 26px;
+        align-items: center;
+      }
+
+      .cg-menu-btn { display: grid; }
+
+      .cg-menu {
+        position: fixed;
+        left: 16px;
+        right: 16px;
+        top: 86px;
+        display: grid;
+        gap: 8px;
+        padding: 14px;
+        border-radius: 26px;
+        background: rgba(255,255,255,.96);
+        box-shadow: 0 26px 80px rgba(23,37,47,.22);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: .22s ease;
+      }
+
+      body.menu-open .cg-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .cg-menu a {
+        width: 100%;
+        background: rgba(47,72,88,.04);
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .cg-hero {
+        min-height: auto;
+        padding: 130px 6% 70px;
+      }
+
+      .cg-hero h1 {
+        font-size: clamp(3.4rem, 16vw, 5.6rem);
+      }
+
+      .cg-hero-actions,
+      .cg-proof,
+      .cg-section-head {
+        display: grid;
+      }
+
+      .cg-section {
+        padding: 62px 6%;
+      }
+
+      .cg-web-grid,
+      .cg-pack-grid,
+      .cg-brand-grid,
+      .cg-footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cg-pack-cover {
+        height: 330px;
+      }
+
+      .cg-brand-card {
+        height: 280px;
+      }
+
+      .cg-tech-box {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .cg-lightbox {
+        padding: 18px;
+      }
+
+      .cg-close {
+        top: 14px;
+        right: 14px;
+      }
+
+      .cg-arrow {
+        top: auto;
+        bottom: 20px;
+        transform: none;
+        width: 48px;
+        height: 48px;
+      }
+
+      .cg-arrow.prev { left: 22px; }
+      .cg-arrow.next { right: 22px; }
+
+      .cg-lightbox-card {
+        border-radius: 26px;
+        max-height: 88vh;
+      }
+
+      .cg-lightbox-info {
+        padding: 24px;
+      }
+
+      .cg-whatsapp {
+        width: 58px;
+        height: 58px;
+        right: 16px;
+        bottom: 16px;
+      }
     }
   </style>
 </head>
+
 <body>
+  <header class="cg-navbar">
+    <a class="cg-brand" href="#inicio" aria-label="CreatiGuate inicio">
+      <img src="logocreatiguateanimado.gif" alt="CreatiGuate">
+      <span>CreatiGuate</span>
+    </a>
 
-  <nav>
-    <img src="logocreatiguateanimado.gif" class="nav-logo" alt="CreatiGuate">
-    <ul class="nav-links">
-      <li><a href="#web">Páginas Web</a></li>
-      <li><a href="#social">Social Media</a></li>
-      <li><a href="#branding">Branding</a></li>
-      <li><a href="https://wa.me/50252157800" class="nav-cta">Contratar</a></li>
-    </ul>
-  </nav>
+    <button class="cg-menu-btn" id="menuBtn" type="button" aria-label="Abrir menú">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
 
-  <section class="hero">
-    <div class="hero-content">
-      <img src="logocreatiguateanimado.gif" class="hero-logo-gif" alt="CreatiGuate GIF">
-      <h1>Elevamos tu marca al<br><span>Siguiente Nivel</span></h1>
-      <p>Agencia Creativa Digital en Guatemala. Especialistas en hacerte destacar.</p>
-      <a href="#web" class="nav-cta" style="text-decoration:none; display:inline-block; margin-top:10px;">Ver Proyectos</a>
+    <nav class="cg-menu" id="mainMenu">
+      <a href="#web">Páginas Web</a>
+      <a href="#social">Social Media</a>
+      <a href="#branding">Branding</a>
+      <a href="#contacto" class="cg-menu-cta">Cotizar</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="cg-hero" id="inicio">
+      <div class="cg-hero-content">
+        <img src="logocreatiguateanimado.gif" class="cg-hero-logo" alt="CreatiGuate">
+        <p class="cg-eyebrow">Agencia creativa en Guatemala</p>
+        <h1>Elevamos tu marca al <span>siguiente nivel.</span></h1>
+        <p>
+          Diseño para redes sociales, branding, páginas web y contenido visual para emprendedores, negocios y marcas que quieren verse profesionales.
+        </p>
+
+        <div class="cg-hero-actions">
+          <a href="https://wa.me/50252157800?text=Hola%20CreatiGuate%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" class="cg-btn cg-btn-primary">
+            Cotizar mi proyecto
+            <span class="material-symbols-outlined">arrow_outward</span>
+          </a>
+
+          <a href="#social" class="cg-btn cg-btn-light">
+            Ver trabajos
+            <span class="material-symbols-outlined">image</span>
+          </a>
+        </div>
+
+        <div class="cg-proof">
+          <div>
+            <strong>Web</strong>
+            <span>Catálogos y páginas</span>
+          </div>
+          <div>
+            <strong>Social</strong>
+            <span>Posts, historias y campañas</span>
+          </div>
+          <div>
+            <strong>Branding</strong>
+            <span>Identidad visual</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cg-hero-visual">
+        <div class="cg-device">
+          <div class="cg-device-card">
+            <p class="cg-eyebrow">CreatiGuate</p>
+            <h3>Tu marca también puede verse así.</h3>
+            <p style="color:var(--muted)">Contenido visual con estética, estrategia y presencia profesional.</p>
+          </div>
+
+          <div class="cg-device-grid">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cg-ticker-wrap" aria-label="Marcas que confían en CreatiGuate">
+      <h2 class="cg-ticker-title">MARCAS QUE CONFÍAN EN NOSOTROS</h2>
+
+      <div class="cg-ticker">
+        <div class="cg-ticker-track">
+          <img src="LOGOS/logoccic.jpg" alt="CCIC">
+          <img src="LOGOS/logodt.png" alt="DT">
+          <img src="LOGOS/logoec.png" alt="EC">
+          <img src="LOGOS/logotp.png" alt="TP">
+          <img src="LOGOS/logoccic.jpg" alt="CCIC">
+          <img src="LOGOS/logodt.png" alt="DT">
+          <img src="LOGOS/logoec.png" alt="EC">
+          <img src="LOGOS/logotp.png" alt="TP">
+          <img src="LOGOS/logoccic.jpg" alt="CCIC">
+          <img src="LOGOS/logodt.png" alt="DT">
+          <img src="LOGOS/logoec.png" alt="EC">
+          <img src="LOGOS/logotp.png" alt="TP">
+        </div>
+      </div>
+    </section>
+
+    <section class="cg-section" id="web">
+      <div class="cg-section-head">
+        <div>
+          <p>Desarrollo & catálogos</p>
+          <h2>Presencia web profesional.</h2>
+        </div>
+      </div>
+
+      <div class="cg-web-grid">
+        <article class="cg-web-card">
+          <div class="cg-web-preview">
+            <iframe src="https://esmeraldascosmetic.github.io/OficialPage/" title="Esmeralda's Cosmetic"></iframe>
+          </div>
+
+          <div class="cg-web-info">
+            <h3>Esmeralda's Cosmetic</h3>
+            <p>Catálogo digital interactivo optimizado para ventas rápidas y visualización de productos.</p>
+            <a href="https://esmeraldascosmetic.github.io/OficialPage/" target="_blank" class="cg-btn cg-btn-primary">
+              Visitar sitio
+              <span class="material-symbols-outlined">arrow_outward</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="cg-web-card">
+          <div class="cg-web-preview">
+            <iframe src="https://thepopularoficial.github.io/Pagina-Oficial/" title="The Popular"></iframe>
+          </div>
+
+          <div class="cg-web-info">
+            <h3>The Popular</h3>
+            <p>Landing page de alto impacto diseñada para navegación fluida y posicionamiento de marca.</p>
+            <a href="https://thepopularoficial.github.io/Pagina-Oficial/" target="_blank" class="cg-btn cg-btn-primary">
+              Visitar sitio
+              <span class="material-symbols-outlined">arrow_outward</span>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <div class="cg-tech-box">
+        <span class="material-symbols-outlined">terminal</span>
+        <div>
+          <h3>Versión rápida para GitHub Pages</h3>
+          <p>
+            Esta versión está pensada para publicar rápido, mostrar portafolio visual y recibir clientes por WhatsApp. No usa base de datos ni panel admin; se actualiza editando este archivo y agregando imágenes a la carpeta.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cg-section cg-section-alt" id="social">
+      <div class="cg-section-head">
+        <div>
+          <p>Contenido para redes</p>
+          <h2>Social Media Kit.</h2>
+        </div>
+
+        <a href="https://wa.me/50252157800?text=Hola%20CreatiGuate%2C%20quiero%20dise%C3%B1os%20para%20redes" target="_blank" class="cg-link">
+          Quiero diseños así
+          <span class="material-symbols-outlined">arrow_outward</span>
+        </a>
+      </div>
+
+      <div class="cg-pack-grid">
+        <article class="cg-pack-card" data-gallery-title="Pack visual 01" data-gallery-type="Social Media" data-gallery-desc="Colección de piezas visuales para redes sociales, pensadas para comunicar con estética y presencia profesional.">
+          <div class="cg-pack-cover">
+            <img src="1.4.png" alt="Pack visual 01">
+            <div class="cg-count"><span class="material-symbols-outlined">photo_library</span>4 piezas</div>
+          </div>
+          <div class="cg-pack-info">
+            <span class="cg-tag">Social Media</span>
+            <h3>Pack visual 01</h3>
+            <p>Posts y piezas gráficas listas para redes.</p>
+          </div>
+          <span data-img="1.4.png"></span>
+          <span data-img="1.1.png"></span>
+          <span data-img="1.2.png"></span>
+          <span data-img="1.3.png"></span>
+        </article>
+
+        <article class="cg-pack-card" data-gallery-title="Pack visual 02" data-gallery-type="Social Media" data-gallery-desc="Diseños para campañas o contenido de marca, agrupados para verse como colección.">
+          <div class="cg-pack-cover">
+            <img src="2.1.jpg" alt="Pack visual 02">
+            <div class="cg-count"><span class="material-symbols-outlined">photo_library</span>3 piezas</div>
+          </div>
+          <div class="cg-pack-info">
+            <span class="cg-tag">Campaña</span>
+            <h3>Pack visual 02</h3>
+            <p>Contenido visual para comunicar promociones e ideas.</p>
+          </div>
+          <span data-img="2.1.jpg"></span>
+          <span data-img="2.2.jpg"></span>
+          <span data-img="2.3.jpg"></span>
+        </article>
+
+        <article class="cg-pack-card" data-gallery-title="Pack visual 03" data-gallery-type="Social Media" data-gallery-desc="Serie gráfica para mantener una línea visual coherente en redes sociales.">
+          <div class="cg-pack-cover">
+            <img src="3.1.jpg" alt="Pack visual 03">
+            <div class="cg-count"><span class="material-symbols-outlined">photo_library</span>3 piezas</div>
+          </div>
+          <div class="cg-pack-info">
+            <span class="cg-tag">Contenido</span>
+            <h3>Pack visual 03</h3>
+            <p>Diseños con identidad y consistencia visual.</p>
+          </div>
+          <span data-img="3.1.jpg"></span>
+          <span data-img="3.2.jpg"></span>
+          <span data-img="3.3.jpg"></span>
+        </article>
+
+        <article class="cg-pack-card" data-gallery-title="Pack visual 04" data-gallery-type="Social Media" data-gallery-desc="Pack completo con varias piezas para una campaña visual de mayor alcance.">
+          <div class="cg-pack-cover">
+            <img src="4.1.png" alt="Pack visual 04">
+            <div class="cg-count"><span class="material-symbols-outlined">photo_library</span>8 piezas</div>
+          </div>
+          <div class="cg-pack-info">
+            <span class="cg-tag">Pack completo</span>
+            <h3>Pack visual 04</h3>
+            <p>Varias piezas dentro de una misma línea creativa.</p>
+          </div>
+          <span data-img="4.1.png"></span>
+          <span data-img="4.2.png"></span>
+          <span data-img="4.3.png"></span>
+          <span data-img="4.4.png"></span>
+          <span data-img="4.5.png"></span>
+          <span data-img="4.6.png"></span>
+          <span data-img="4.7.png"></span>
+          <span data-img="4.8.png"></span>
+        </article>
+      </div>
+    </section>
+
+    <section class="cg-section" id="branding">
+      <div class="cg-section-head">
+        <div>
+          <p>Identidad visual</p>
+          <h2>Branding & logos.</h2>
+        </div>
+      </div>
+
+      <div class="cg-brand-grid">
+        <article class="cg-brand-card" data-single-img="Branding/1.png" data-single-title="Branding 01"><img src="Branding/1.png" alt="Branding 01"><p>Branding 01</p></article>
+        <article class="cg-brand-card" data-single-img="Branding/2.png" data-single-title="Branding 02"><img src="Branding/2.png" alt="Branding 02"><p>Branding 02</p></article>
+        <article class="cg-brand-card" data-single-img="Branding/3.png" data-single-title="Branding 03"><img src="Branding/3.png" alt="Branding 03"><p>Branding 03</p></article>
+        <article class="cg-brand-card" data-single-img="Branding/4.png" data-single-title="Branding 04"><img src="Branding/4.png" alt="Branding 04"><p>Branding 04</p></article>
+        <article class="cg-brand-card" data-single-img="Branding/5.png" data-single-title="Branding 05"><img src="Branding/5.png" alt="Branding 05"><p>Branding 05</p></article>
+        <article class="cg-brand-card" data-single-img="Branding/6.png" data-single-title="Branding 06"><img src="Branding/6.png" alt="Branding 06"><p>Branding 06</p></article>
+        <article class="cg-brand-card" data-single-img="Branding/7.png" data-single-title="Branding 07"><img src="Branding/7.png" alt="Branding 07"><p>Branding 07</p></article>
+        <article class="cg-brand-card" data-single-img="Branding/8.png" data-single-title="Branding 08"><img src="Branding/8.png" alt="Branding 08"><p>Branding 08</p></article>
+        <article class="cg-brand-card" data-single-img="Branding/9.png" data-single-title="Branding 09"><img src="Branding/9.png" alt="Branding 09"><p>Branding 09</p></article>
+      </div>
+    </section>
+
+    <section class="cg-cta" id="contacto">
+      <p class="cg-eyebrow">Tu marca puede ser la siguiente</p>
+      <h2>Hablemos de lo que querés construir.</h2>
+      <p>
+        Contanos qué necesitás: diseños para redes, branding, página web o una campaña visual completa. Te ayudamos a darle presencia profesional a tu marca.
+      </p>
+
+      <a href="https://wa.me/50252157800?text=Hola%20CreatiGuate%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" class="cg-btn cg-btn-primary">
+        Escribir por WhatsApp
+        <span class="material-symbols-outlined">chat</span>
+      </a>
+    </section>
+  </main>
+
+  <footer class="cg-footer">
+    <div class="cg-footer-grid">
+      <div>
+        <div class="cg-footer-logo">
+          <img src="logocreatiguateanimado.gif" alt="CreatiGuate">
+          <h3>CreatiGuate</h3>
+        </div>
+        <p>Transformamos ideas en activos digitales de alto valor. Desde Guatemala para marcas que quieren destacar.</p>
+      </div>
+
+      <div>
+        <h4>Contacto</h4>
+        <p>Coatepeque, Quetzaltenango, Guatemala</p>
+        <p>creatiguate2003@gmail.com</p>
+        <p>+502 5215 7800</p>
+      </div>
+
+      <div>
+        <h4>Síguenos</h4>
+        <div class="cg-social-links">
+          <a href="https://www.facebook.com/creatiguate" target="_blank">Facebook</a>
+          <a href="https://www.instagram.com/creatiguate/" target="_blank">Instagram</a>
+          <a href="https://www.tiktok.com/@creatiguate" target="_blank">TikTok</a>
+          <a href="https://wa.me/50252157800" target="_blank">WhatsApp</a>
+        </div>
+      </div>
     </div>
-  </section>
 
-  <div class="ticker-wrapper">
-    <h2 class="ticker-title">MARCAS QUE CONFÍAN EN NOSOTROS</h2>
-    <div class="ticker">
-      <div class="ticker-content">
-        <img src="LOGOS/logoccic.jpg" alt="CCIC">
-        <img src="LOGOS/logodt.png" alt="DT">
-        <img src="LOGOS/logoec.png" alt="EC">
-        <img src="LOGOS/logotp.png" alt="TP">
-        
-        <img src="LOGOS/logoccic.jpg" alt="CCIC">
-        <img src="LOGOS/logodt.png" alt="DT">
-        <img src="LOGOS/logoec.png" alt="EC">
-        <img src="LOGOS/logotp.png" alt="TP">
-        
-        <img src="LOGOS/logoccic.jpg" alt="CCIC">
-        <img src="LOGOS/logodt.png" alt="DT">
-        <img src="LOGOS/logoec.png" alt="EC">
-        <img src="LOGOS/logotp.png" alt="TP">
+    <div class="cg-footer-bottom">
+      © 2026 CreatiGuate. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <a class="cg-whatsapp" href="https://wa.me/50252157800?text=Hola%20CreatiGuate%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" aria-label="WhatsApp">
+    <span class="material-symbols-outlined">chat</span>
+  </a>
+
+  <div class="cg-lightbox" id="lightbox" aria-hidden="true">
+    <button type="button" class="cg-close" id="closeLightbox" aria-label="Cerrar">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+
+    <button type="button" class="cg-arrow prev" id="prevImage" aria-label="Anterior">
+      <span class="material-symbols-outlined">chevron_left</span>
+    </button>
+
+    <button type="button" class="cg-arrow next" id="nextImage" aria-label="Siguiente">
+      <span class="material-symbols-outlined">chevron_right</span>
+    </button>
+
+    <div class="cg-lightbox-card">
+      <div class="cg-lightbox-main">
+        <img src="" alt="" id="lightboxImage">
+      </div>
+
+      <div class="cg-lightbox-info">
+        <small id="lightboxType"></small>
+        <h3 id="lightboxTitle"></h3>
+        <p id="lightboxDesc"></p>
+        <p id="lightboxPosition"></p>
+        <div class="cg-thumbs" id="lightboxThumbs"></div>
+
+        <a href="https://wa.me/50252157800?text=Hola%20CreatiGuate%2C%20quiero%20un%20dise%C3%B1o%20similar" target="_blank" class="cg-btn cg-btn-primary">
+          Cotizar diseño similar
+          <span class="material-symbols-outlined">arrow_outward</span>
+        </a>
       </div>
     </div>
   </div>
 
-  <section id="web">
-    <div class="section-header">
-      <p>Desarrollo & Catálogos</p>
-      <h2>Presencia Web Profesional</h2>
-    </div>
-    
-    <div class="web-grid">
-      <div class="web-card">
-        <div class="web-img-box">
-          <iframe src="https://esmeraldascosmetic.github.io/OficialPage/" scrolling="no"></iframe> 
-        </div>
-        <div class="web-info">
-          <h3>Esmeralda's Cosmetic</h3>
-          <p>Catálogo digital interactivo optimizado para ventas rápidas y visualización de productos.</p>
-          <a href="https://esmeraldascosmetic.github.io/OficialPage/" target="_blank" class="web-link">Visitar Sitio Real <span class="material-symbols-outlined">arrow_outward</span></a>
-        </div>
-      </div>
-
-      <div class="web-card">
-        <div class="web-img-box">
-          <iframe src="https://thepopularoficial.github.io/Pagina-Oficial/" scrolling="no"></iframe>
-        </div>
-        <div class="web-info">
-          <h3>THE POPULAR</h3>
-          <p>Landing page de alto impacto, diseñada para navegación fluida y posicionamiento de marca.</p>
-          <a href="https://thepopularoficial.github.io/Pagina-Oficial/" target="_blank" class="web-link">Visitar Sitio Real <span class="material-symbols-outlined">arrow_outward</span></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="tech-info">
-      <span class="material-symbols-outlined" style="font-size: 4rem; color: var(--sage);">terminal</span>
-      <div style="flex:1; min-width: 300px;">
-        <h4>¿Por qué alojamos en GitHub Pages?</h4>
-        <p>Utilizamos la infraestructura global de <strong>GitHub</strong> para nuestros proyectos web porque garantiza una <strong>velocidad de carga superior</strong>, seguridad SSL de grado bancario automática y una disponibilidad del 99.9%. Tu página no se caerá y siempre estará en línea, lista para vender 24/7.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="social" style="background: #f0f4f7;">
-    <div class="section-header">
-      <p>Contenido para Redes</p>
-      <h2>Social Media Kit</h2>
-    </div>
-
-    <div class="stack-grid">
-      
-      <div class="stack-container" onclick="rotateStack(this)">
-        <img src="1.4.png" class="stack-card" alt="Social 1">
-        <img src="1.1.png" class="stack-card" alt="Social 1.1">
-        <img src="1.2.png" class="stack-card" alt="Social 1.2">
-        <img src="1.3.png" class="stack-card" alt="Social 1.3">
-      </div>
-
-      <div class="stack-container" onclick="rotateStack(this)">
-        <img src="2.1.jpg" class="stack-card" alt="Social 2.1">
-        <img src="2.2.jpg" class="stack-card" alt="Social 2.2">
-        <img src="2.3.jpg" class="stack-card" alt="Social 2.3">
-      </div>
-
-      <div class="stack-container" onclick="rotateStack(this)">
-        <img src="3.1.jpg" class="stack-card" alt="Social 3.1">
-        <img src="3.2.jpg" class="stack-card" alt="Social 3.2">
-        <img src="3.3.jpg" class="stack-card" alt="Social 3.3">
-      </div>
-
-      <div class="stack-container" onclick="rotateStack(this)">
-        <img src="4.1.png" class="stack-card" alt="Social 4.1">
-        <img src="4.2.png" class="stack-card" alt="Social 4.2">
-        <img src="4.3.png" class="stack-card" alt="Social 4.3">
-        <img src="4.4.png" class="stack-card" alt="Social 4.4">
-        <img src="4.5.png" class="stack-card" alt="Social 4.5">
-        <img src="4.6.png" class="stack-card" alt="Social 4.6">
-        <img src="4.7.png" class="stack-card" alt="Social 4.7">
-        <img src="4.8.png" class="stack-card" alt="Social 4.8">
-      </div>
-
-    </div> <p style="text-align:center; margin-top:50px; font-weight:bold; color: var(--navy); font-size: 1.1rem; padding: 10px; background: rgba(0,0,0,0.05); border-radius: 10px; max-width: 400px; margin-left: auto; margin-right: auto;">
-      👆 Toca las tarjetas para ver la colección completa
-    </p>
-  </section>
-
-  <section id="branding">
-    <div class="section-header">
-      <p>Identidad Visual</p>
-      <h2>Branding & Logos</h2>
-    </div>
-    <div class="branding-grid">
-      <div class="brand-item"><img src="Branding/1.png" alt="Branding"></div>
-      <div class="brand-item"><img src="Branding/2.png" alt="Branding"></div>
-      <div class="brand-item"><img src="Branding/3.png" alt="Branding"></div>
-      <div class="brand-item"><img src="Branding/4.png" alt="Branding"></div>
-      <div class="brand-item"><img src="Branding/5.png" alt="Branding"></div>
-      <div class="brand-item"><img src="Branding/6.png" alt="Branding"></div>
-      <div class="brand-item"><img src="Branding/7.png" alt="Branding"></div>
-      <div class="brand-item"><img src="Branding/8.png" alt="Branding"></div>
-      <div class="brand-item"><img src="Branding/9.png" alt="Branding"></div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-content">
-      <div class="footer-logo-box">
-        <img src="logocreatiguateanimado.gif" alt="CreatiGuate">
-        <h3>CreatiGuate</h3>
-        <p>Transformamos ideas en activos digitales de alto valor con ese amor Chapín. Desde Guatemala para el mundo.</p>
-      </div>
-      <div>
-        <h4>Contacto Directo</h4>
-        <p>📍 Coatepeque, Quetzaltenango, Guatemala</p>
-        <p>📧 creatiguate2003@gmail.com</p>
-        <p>📞 +502 5215 7800</p>
-      </div>
-      <div>
-        <h4>Síguenos</h4>
-        <div class="social-links">
-          <a href="https://www.facebook.com/creatiguate" target="_blank">FB</a>
-          <a href="https://www.instagram.com/creatiguate/" target="_blank">IG</a>
-          <a href="https://www.tiktok.com/@creatiguate" target="_blank">TK</a>
-          <a href="https://wa.me/50252157800" target="_blank">WA</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2026 CreatiGuate. Todos los derechos reservados.
-    </div>
-  </footer>
-
   <script>
-    // Lógica mejorada de rotación de tarjetas apiladas
-    function updateStack(container) {
-      const cards = container.querySelectorAll('.stack-card');
-      cards.forEach((card, index) => {
-        card.style.zIndex = cards.length - index;
-        // El ajuste hace que se apilen hacia abajo y se achiquen ligeramente
-        card.style.transform = `translateY(${index * 12}px) scale(${1 - index * 0.04})`;
-        card.style.opacity = index > 3 ? 0 : 1 - index * 0.2; 
-        card.style.visibility = index > 3 ? 'hidden' : 'visible';
+    const menuBtn = document.getElementById("menuBtn");
+    const mainMenu = document.getElementById("mainMenu");
+
+    menuBtn.addEventListener("click", () => {
+      document.body.classList.toggle("menu-open");
+      const isOpen = document.body.classList.contains("menu-open");
+      menuBtn.innerHTML = `<span class="material-symbols-outlined">${isOpen ? "close" : "menu"}</span>`;
+    });
+
+    mainMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        document.body.classList.remove("menu-open");
+        menuBtn.innerHTML = `<span class="material-symbols-outlined">menu</span>`;
+      });
+    });
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxTitle = document.getElementById("lightboxTitle");
+    const lightboxType = document.getElementById("lightboxType");
+    const lightboxDesc = document.getElementById("lightboxDesc");
+    const lightboxPosition = document.getElementById("lightboxPosition");
+    const lightboxThumbs = document.getElementById("lightboxThumbs");
+    const closeLightbox = document.getElementById("closeLightbox");
+    const prevImage = document.getElementById("prevImage");
+    const nextImage = document.getElementById("nextImage");
+
+    let currentImages = [];
+    let currentIndex = 0;
+
+    function renderLightbox() {
+      if (!currentImages.length) return;
+
+      const src = currentImages[currentIndex];
+      lightboxImage.src = src;
+      lightboxImage.alt = lightboxTitle.textContent || "CreatiGuate";
+      lightboxPosition.textContent = `Imagen ${currentIndex + 1} de ${currentImages.length}`;
+
+      lightboxThumbs.querySelectorAll(".cg-thumb").forEach((thumb, index) => {
+        thumb.classList.toggle("active", index === currentIndex);
       });
     }
 
-    function rotateStack(container) {
-      const cards = Array.from(container.querySelectorAll('.stack-card'));
-      if (cards.length === 0) return;
-      
-      const firstCard = cards.shift(); 
-      
-      // Animación de salida (la tarjeta se desliza y desaparece)
-      firstCard.style.transform = "translateX(120%) rotate(15deg) scale(0.9)";
-      firstCard.style.opacity = "0";
+    function renderThumbs() {
+      lightboxThumbs.innerHTML = "";
 
-      setTimeout(() => {
-        container.appendChild(firstCard); // Pasa al fondo del DOM
-        updateStack(container);
-      }, 350);
+      currentImages.forEach((src, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "cg-thumb";
+        button.innerHTML = `<img src="${src}" alt="Miniatura ${index + 1}">`;
+
+        button.addEventListener("click", () => {
+          currentIndex = index;
+          renderLightbox();
+        });
+
+        lightboxThumbs.appendChild(button);
+      });
     }
 
-    // Inicializar todas las pilas al cargar la página
-    document.querySelectorAll('.stack-container').forEach(updateStack);
+    function openGallery({ title, type, desc, images }) {
+      currentImages = images.filter(Boolean);
+      currentIndex = 0;
+
+      if (!currentImages.length) return;
+
+      lightboxTitle.textContent = title || "CreatiGuate";
+      lightboxType.textContent = type || "Portafolio visual";
+      lightboxDesc.textContent = desc || "Pieza visual realizada por CreatiGuate.";
+
+      renderThumbs();
+      renderLightbox();
+
+      lightbox.classList.add("active");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeGallery() {
+      lightbox.classList.remove("active");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      currentImages = [];
+      currentIndex = 0;
+    }
+
+    function goPrev() {
+      if (!currentImages.length) return;
+      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+      renderLightbox();
+    }
+
+    function goNext() {
+      if (!currentImages.length) return;
+      currentIndex = (currentIndex + 1) % currentImages.length;
+      renderLightbox();
+    }
+
+    document.querySelectorAll(".cg-pack-card").forEach(card => {
+      card.addEventListener("click", () => {
+        const images = Array.from(card.querySelectorAll("[data-img]")).map(item => item.dataset.img);
+
+        openGallery({
+          title: card.dataset.galleryTitle,
+          type: card.dataset.galleryType,
+          desc: card.dataset.galleryDesc,
+          images
+        });
+      });
+    });
+
+    document.querySelectorAll("[data-single-img]").forEach(card => {
+      card.addEventListener("click", () => {
+        openGallery({
+          title: card.dataset.singleTitle,
+          type: "Branding & Logos",
+          desc: "Diseño de identidad visual y branding realizado por CreatiGuate.",
+          images: [card.dataset.singleImg]
+        });
+      });
+    });
+
+    closeLightbox.addEventListener("click", closeGallery);
+    prevImage.addEventListener("click", goPrev);
+    nextImage.addEventListener("click", goNext);
+
+    lightbox.addEventListener("click", event => {
+      if (event.target === lightbox) closeGallery();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (!lightbox.classList.contains("active")) return;
+      if (event.key === "Escape") closeGallery();
+      if (event.key === "ArrowLeft") goPrev();
+      if (event.key === "ArrowRight") goNext();
+    });
+
+    const revealItems = document.querySelectorAll(".cg-web-card, .cg-pack-card, .cg-brand-card, .cg-tech-box");
+    if ("IntersectionObserver" in window) {
+      revealItems.forEach(item => {
+        item.style.opacity = "0";
+        item.style.transform = "translateY(18px)";
+        item.style.transition = "opacity .55s ease, transform .55s ease";
+      });
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: .16 });
+
+      revealItems.forEach(item => observer.observe(item));
+    }
   </script>
 </body>
 </html>
